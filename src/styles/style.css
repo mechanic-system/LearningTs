@@ -1,0 +1,39 @@
+@import "roboto.css";
+@import '~normalize.css';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+}
+
+.title{
+    color: green;
+}
+
+.logo{
+    background-image: url('../assets/orlan.png');
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.box-title{
+    width: 200px;
+    height: 200px;
+    background: blue;
+}
