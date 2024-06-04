@@ -75,7 +75,7 @@ module.exports = {
   },
   optimization: optimization(),
   devServer: {
-    port: 4044,
+    port: 5000,
     watchFiles: path.resolve(__dirname, 'src'),
   },
   // target: 'web',
