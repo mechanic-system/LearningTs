@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -63,7 +64,7 @@ module.exports = {
   entry: './index.tsx',
   target: 'web',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
     alias: {
       '@models': path.resolve(__dirname, 'src/models'),
       '@': path.resolve(__dirname, 'src'),
@@ -102,7 +103,22 @@ module.exports = {
     }),
     new ESLintWebpackPlugin(
       {
-        extensions: ['.js', '.mjs', '.jsx'],
+        extensions: ['.js', '.mjs', '.jsx', 'tsx'],
+        exclude: 'node_modules',
+        emitWarning: true,
+        failOnError: true,
+        failOnWarning: false,
+        quiet: true,
+        emitError: true,
+        fix: false,
+      },
+    ),
+    new ForkTsCheckerWebpackPlugin(
+      {
+        async: false,
+        typescript: {
+          configFile: path.resolve(__dirname, './tsconfig.json'),
+        },
       },
     ),
   ],

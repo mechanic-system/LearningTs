@@ -1,4 +1,8 @@
-function App({ title }: { title: string }) {
+import * as React from 'react';
+// import Task5 from '../Chapter4/Task5.tsx';
+import Chess from '../Chapter5/Chess.tsx';
+
+function App(): React.ReactElement {
   // type Reserve = {
   //   (from: Date, to: Date, destination: string): string
   //   (from: Date, destination: string): string
@@ -30,24 +34,27 @@ function App({ title }: { title: string }) {
   // console.log('res2', res2);
   // console.log('res3', res3);
 
-  type Foo = {
-    value: string
-  }
-  type Baz = {
-    value: number
-  }
+  // type FuncWithSecondArgString = {
+  //   <T extends (...args: any[]) => unknown[]>(
+  //     f: (a: Parameters<T>[0], b: string, ...rest: unknown[]) => ReturnType<T>,
+  //     ...args: [Parameters<T>[0], string, ...unknown[]]
+  //   ): ReturnType<T>;
+  // };
 
-  function call<T extends Foo>(f: (...args: unknown[]) => unknown[], ...args: unknown[]): unknown[] {
-    return f(...args);
-  }
-  function fill(length: number, value: string): string[] {
-    return Array.from({ length }, () => value);
-  }
+  // Перегрузка функции
+  // const call: FuncWithSecondArgString = (f, ...args) => f(...args);
+  //
+  // // Пример функции
+  // function fill(length: number, value: string): string[] {
+  //   return Array.from({ length }, () => value);
+  // }
 
-  console.log(call(fill, '5', 1));
+  // Использование
+  // const result = call(fill, 10, '1'); // вычисляется как массив из 10 'a'
+  // console.log('result', result);
 
   return (
-    <> </>
+    <Chess />
   );
 }
 
