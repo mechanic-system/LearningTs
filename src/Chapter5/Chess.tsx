@@ -15,7 +15,7 @@ export default function Bord(): React.ReactElement {
   const game = new Game();
   const figureId = game.StartGame();
   const [figure, setFigure] = useState<Pieces[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [arrayBord, setArrayBord] = useState<BordCall[]>([]);
   const [selectFigure, setSelectFigure] = useState<Pieces | null>(null);
   const [arrayIdCall, setArrayIdCall] = useState<string[]>([]);
@@ -58,25 +58,28 @@ export default function Bord(): React.ReactElement {
       }
     });
   };
-  const handleSelect = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+
+  const handleSelectCall = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
     const idCall = e.currentTarget.getAttribute('id');
     const res = idCall?.split('') ? idCall?.split('') : [];
     setArrayIdCall(res);
   };
+
   useEffect(() => {
     if (selectFigure !== null && Object.keys(selectFigure).length) {
       selectFigure?.moveTo(new Position(arrayIdCall[0], Number(arrayIdCall[1])));
       setSelectFigure(null);
     }
   }, [arrayIdCall]);
+
   return (
     <div className="container-chees">
       {arrayBord.map((item: BordCall, index: number) => (
         <div
           key={count += 1}
           role="presentation"
-          onClick={(event) => handleSelect(event)}
+          onClick={(event) => handleSelectCall(event)}
           className={`container-call ${item.color}`}
           id={item.id}
         >
@@ -84,7 +87,7 @@ export default function Bord(): React.ReactElement {
             el.getPosition().getFile() + el.getPosition().getRank() === item.id
               ? (
                 <>
-                  {console.log('el', el)}
+                  {/* {console.log('el', el)} */}
                   <div
                     role="presentation"
                     onClick={(event) => handleClickFigure(index, event)}
