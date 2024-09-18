@@ -1,0 +1,100 @@
+.container-chees {
+  width: 860px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  transform: rotate(-90deg);
+}
+
+.container-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.callWhite {
+  width: 100px;
+  height: 100px;
+  background-color: #f5dfc3;
+  ;
+}
+
+.callBlack {
+  width: 100px;
+  height: 100px;
+  background-color: #d3733a;
+  ;
+}
+
+.White {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+}
+
+.Black {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+}
+
+.pic-stile {
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.b[data-name="Pawn"] {
+  background-image: url("../../assets/icon/figure/b_pawn.png");
+}
+
+.b[data-name="Rook"] {
+  background-image: url("../../assets/icon/figure/b_rook.png");
+}
+
+.b[data-name="Queen"] {
+  background-image: url("../../assets/icon/figure/b_queen.png");
+}
+
+.b[data-name="Knight"] {
+  background-image: url("../../assets/icon/figure/b_knight.png");
+}
+
+.b[data-name="Bishop"] {
+  background-image: url("../../assets/icon/figure/b_bishop.png");
+}
+
+.b[data-name="King"] {
+  background-image: url("../../assets/icon/figure/b_king.png");
+}
+
+
+.w[data-name="King"] {
+  background-image: url("../../assets/icon/figure/w_king.png");
+}
+
+.w[data-name="Pawn"] {
+  background-image: url("../../assets/icon/figure/w_pawn.png");
+}
+
+.w[data-name="Rook"] {
+  background-image: url("../../assets/icon/figure/w_rook.png");
+}
+
+.w[data-name="Queen"] {
+  background-image: url("../../assets/icon/figure/w_queen.png");
+}
+
+.w[data-name="Knight"] {
+  background-image: url("../../assets/icon/figure/w_knight.png");
+}
+
+.w[data-name="Bishop"] {
+  background-image: url("../../assets/icon/figure/w_bishop.png");
+}
+
+.select {
+  background-size: 100%;
+}

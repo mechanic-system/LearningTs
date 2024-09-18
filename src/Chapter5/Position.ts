@@ -2,8 +2,8 @@ import { File, Rank } from './Chess.tsx';
 
 export default class Position {
   constructor(
-    private file: File,
-    private rank: Rank,
+    private file: File | string,
+    private rank: Rank | number,
   ) {
     this.file = file;
     this.rank = rank;
