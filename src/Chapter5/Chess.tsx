@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Scss/Chess.css';
 import Game, { Pieces } from './Game.ts';
 import Position from './Position.ts';
+import './Scss/Chess.css';
 
 export type Color = 'Black' | 'White';
 export type File = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H';
@@ -19,6 +19,7 @@ export default function Bord(): React.ReactElement {
   const [arrayBord, setArrayBord] = useState<BordCall[]>([]);
   const [selectFigure, setSelectFigure] = useState<Pieces | null>(null);
   const [arrayIdCall, setArrayIdCall] = useState<string[]>([]);
+  const [progress, setProgress] = useState<Color>('White');
 
   const call = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   const callColor = { black: 'callBlack', white: 'callWhite' };
@@ -39,24 +40,35 @@ export default function Bord(): React.ReactElement {
     }
     setArrayBord(arr);
   }
+
   useEffect(() => {
     setFigure(figureId);
     createBord();
   }, []);
-  let count = 0;
+
   const handleClickFigure = (index: number, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
     const { currentTarget } = e;
-    const figureFile = currentTarget.getAttribute('data-file');
-    const figureRank = currentTarget.getAttribute('data-rank');
     figure.forEach((item) => {
+      const figureFile = currentTarget.getAttribute('data-file');
+      const figureRank = currentTarget.getAttribute('data-rank');
       if (item.getPosition().getFile() === figureFile
         && item.getPosition().getRank() === Number(figureRank)
-        && item.getColor() === 'White') {
+        && item.getColor() === progress) {
+        console.log('item', item);
         setSelectFigure(item);
         setActiveIndex(index);
+        currentTarget.classList.toggle('select');
+        console.log('555');
       }
     });
+    // console.log('figureFile', figureFile, figureRank);
+    // console.log('figureRank', figureRank);
+    // if (selectFigure) {
+    //   // selectFigure?.moveTo(new Position(String(figureFile), Number(figureRank)));
+    //   console.log('222');
+    //   // setSelectFigure(null);
+    // }
   };
 
   const handleSelectCall = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -64,26 +76,39 @@ export default function Bord(): React.ReactElement {
     const idCall = e.currentTarget.getAttribute('id');
     const res = idCall?.split('') ? idCall?.split('') : [];
     setArrayIdCall(res);
+    console.log('handleSelectCall');
   };
 
-  useEffect(() => {
-    if (selectFigure !== null && Object.keys(selectFigure).length) {
+  function Move() {
+    if (selectFigure !== null && Object.keys(selectFigure).length && arrayIdCall.length) {
       selectFigure?.moveTo(new Position(arrayIdCall[0], Number(arrayIdCall[1])));
       setSelectFigure(null);
+      setProgress(selectFigure.getColor() === 'White' ? 'Black' : 'White');
+      console.log('change');
     }
+  }
+
+  function Capture() {
+    console.log('selectFigure', selectFigure);
+  }
+
+  useEffect(() => {
+    Move();
+    Capture();
+    return () => { console.log('1'); };
   }, [arrayIdCall]);
 
   return (
     <div className="container-chees">
-      {arrayBord.map((item: BordCall, index: number) => (
+      {arrayBord.map((item: BordCall) => (
         <div
-          key={count += 1}
+          key={item.id}
           role="presentation"
           onClick={(event) => handleSelectCall(event)}
           className={`container-call ${item.color}`}
           id={item.id}
         >
-          {figure.map((el) => (
+          {figure.map((el, index: number) => (
             el.getPosition().getFile() + el.getPosition().getRank() === item.id
               ? (
                 <>

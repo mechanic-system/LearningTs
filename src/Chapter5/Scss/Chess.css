@@ -41,7 +41,8 @@
 }
 
 .pic-stile {
-  background-size: 70%;
+  cursor: pointer;
+  background-size: 85%;
   background-repeat: no-repeat;
   background-position: center;
 }
