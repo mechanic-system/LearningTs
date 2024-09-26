@@ -1,4 +1,5 @@
 import { File, Rank, Color } from './Chess.tsx';
+import { Pieces } from './Game.ts';
 import Position from './Position.ts';
 
 export default abstract class Piece {
@@ -25,4 +26,6 @@ export default abstract class Piece {
   }
 
   abstract canMoveTo(position: Position): boolean
+
+  abstract canFollowRoute(figure: Pieces[], rank: number, file: number): Pieces[]
 }

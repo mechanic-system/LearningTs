@@ -17,7 +17,7 @@ export default class Game {
       new King('Black', 'E', 8),
 
       // Ферзи
-      new Queen('White', 'D', 1),
+      new Queen('White', 'D', 4),
       new Queen('Black', 'D', 8),
 
       // Слоны
