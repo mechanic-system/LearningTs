@@ -13,21 +13,24 @@ export default class Knight extends Piece {
     for (
       let rankU = this.position.getRank(),
         rankD = this.position.getRank(),
-        fileL = this.position.getRank(),
-        fileR = this.position.getRank(),
+        fileL = this.position.getFile().charCodeAt(0),
+        fileR = this.position.getFile().charCodeAt(0),
         rankCountU = 8,
         rankCountD = 1,
         traficU = this.position.figureTrafic(figure),
         traficD = this.position.figureTrafic(figure),
-        traficR = this.position.figureTrafic(figure),
         traficL = this.position.figureTrafic(figure),
+        traficR = this.position.figureTrafic(figure),
         traficUL = this.position.figureTrafic(figure),
         traficUR = this.position.figureTrafic(figure),
         traficDL = this.position.figureTrafic(figure),
         traficDR = this.position.figureTrafic(figure);
       rankU <= rankCountU || rankD >= rankCountD;
-      rankU += 1, rankD -= 1, fileR += 1, fileL -= 1
+      rankU += 1, rankD -= 1, fileL -= 1, fileR += 1
     ) {
+      if (rankD < 1) {
+        rankD = -1;
+      }
       const arrFunctionTrafic = [
         traficU({ rankValue: rankU }),
         traficD({ rankValue: rankD }),

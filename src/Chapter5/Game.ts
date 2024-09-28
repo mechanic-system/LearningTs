@@ -17,7 +17,7 @@ export default class Game {
       new King('Black', 'E', 8),
 
       // Ферзи
-      new Queen('White', 'D', 4),
+      new Queen('White', 'D', 1),
       new Queen('Black', 'D', 8),
 
       // Слоны
@@ -56,6 +56,52 @@ export default class Game {
       new Pawn('Black', 'G', 7),
       new Pawn('Black', 'H', 7),
     ];
+
+    // return [
+    //   // Короли
+    //   new King('White', 'E', 1),
+    //   new King('Black', 'E', 8),
+
+    //   // Ферзи
+    //   new Queen('White', 'D', 3),
+    //   new Queen('Black', 'D', 8),
+
+    //   // Слоны
+    //   new Bishop('White', 'D', 2),
+    //   new Bishop('White', 'F', 1),
+    //   new Bishop('Black', 'C', 8),
+    //   new Bishop('Black', 'F', 8),
+
+    //   // Кони
+    //   new Knight('White', 'C', 3),
+    //   new Knight('White', 'E', 3),
+    //   new Knight('Black', 'C', 4),
+    //   new Knight('Black', 'E', 4),
+
+    //   // Ладьи
+    //   new Rook('White', 'D', 4),
+    //   new Rook('White', 'H', 1),
+    //   new Rook('Black', 'A', 8),
+    //   new Rook('Black', 'H', 8),
+
+    //   // Пешки
+    //   new Pawn('White', 'A', 2),
+    //   new Pawn('White', 'B', 2),
+    //   new Pawn('White', 'C', 2),
+    //   new Pawn('White', 'D', 1),
+    //   new Pawn('White', 'E', 2),
+    //   new Pawn('White', 'F', 2),
+    //   new Pawn('White', 'G', 2),
+    //   new Pawn('White', 'H', 2),
+    //   new Pawn('Black', 'A', 7),
+    //   new Pawn('Black', 'B', 7),
+    //   new Pawn('Black', 'C', 7),
+    //   new Pawn('Black', 'D', 7),
+    //   new Pawn('Black', 'E', 7),
+    //   new Pawn('Black', 'F', 7),
+    //   new Pawn('Black', 'G', 7),
+    //   new Pawn('Black', 'H', 7),
+    // ];
   }
 
   StartGame(): Pieces[] {

@@ -23,19 +23,25 @@ export default class Position {
 
   figureTrafic(figure: Pieces[]) {
     let selector = false;
-    const trafic = (data: { rankValue?: number, fileValue?: number}) => {
-      const { rankValue = 0, fileValue = 0 } = data;
+    const trafic = (data: { rankValue?: number | null, fileValue?: number}) => {
+      const { rankValue = null, fileValue = null } = data;
       if (!selector) {
         return figure.find((el: Pieces) => {
+          // console.log('rankValue', rankValue, 'fileValue', fileValue, 'this.file', this.file);
           if (
             el.getPosition().getRank() === (rankValue || this.rank)
-          && ((rankValue && fileValue === 0)
-            ? el.getPosition().getFile() === this.file
-            : el.getPosition().getFile() === String.fromCharCode(fileValue))
-          && ((rankValue && fileValue === 0)
-            ? el.getPosition().getRank() !== this.rank
-            : el.getPosition().getFile() !== this.file)
+          && (
+            (rankValue === null || rankValue) && fileValue === null
+              ? el.getPosition().getFile() === this.file
+              : el.getPosition().getFile().charCodeAt(0) === fileValue
+          )
+          && (
+            (rankValue === null || rankValue) && fileValue === null
+              ? el.getPosition().getRank() !== this.rank
+              : el.getPosition().getFile() !== this.file
+          )
           ) {
+            console.log('el', el, 'rankValue', rankValue, 'fileValue', fileValue);
             selector = true;
             return el;
           }
